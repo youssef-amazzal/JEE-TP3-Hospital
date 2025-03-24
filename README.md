@@ -16,3 +16,5 @@ Créer une application Web JEE basée sur Spring MVC, Thylemeaf et Spring Data J
 ### Ajout de recherche
 ![img_4.png](img_4.png)
 
+### Ajout de la suppression
+![img_5.png](img_5.png)

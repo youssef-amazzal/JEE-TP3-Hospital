@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
 import youssef.amazzal.JEE_TP3_Hospital.entities.Patient;
 import youssef.amazzal.JEE_TP3_Hospital.repository.PatientRepository;
 
@@ -26,5 +27,11 @@ public class PatientController {
         model.addAttribute("currentPage", page);
         model.addAttribute("keyword", keyword);
         return "patients";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deletePatient(@PathVariable Long id, @RequestParam(name = "keyword", defaultValue = "") String keyword, @RequestParam(name = "page", defaultValue = "0") int page) {
+        repository.deleteById(id);
+        return "redirect:/index?keyword=" + keyword + "&page=" + page;
     }
 }

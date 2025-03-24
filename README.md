@@ -12,3 +12,7 @@ Créer une application Web JEE basée sur Spring MVC, Thylemeaf et Spring Data J
 ### Ajout de pagination
 ![img_2.png](img_2.png)
 ![img_3.png](img_3.png)
+
+### Ajout de recherche
+![img_4.png](img_4.png)
+

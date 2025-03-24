@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import youssef.amazzal.JEE_TP3_Hospital.entities.Patient;
 import youssef.amazzal.JEE_TP3_Hospital.repository.PatientRepository;
 
-import java.util.List;
-
 @Controller
 @AllArgsConstructor
 public class PatientController {
@@ -19,12 +17,14 @@ public class PatientController {
 
     @GetMapping("/index")
     public String index(Model model,
-                        @RequestParam(name = "page" , defaultValue = "0") int page,
-                        @RequestParam(name = "size" , defaultValue = "1") int size
-    ) {
-        Page<Patient> patients = repository.findAll(PageRequest.of(page, size));
+                        @RequestParam(name = "page", defaultValue = "0") int page,
+                        @RequestParam(name = "size", defaultValue = "5") int size,
+                        @RequestParam(name = "keyword", defaultValue = "") String keyword) {
+        Page<Patient> patients = repository.findByIName(keyword, PageRequest.of(page, size));
         model.addAttribute("patients", patients.getContent());
         model.addAttribute("pages", new int[patients.getTotalPages()]);
+        model.addAttribute("currentPage", page);
+        model.addAttribute("keyword", keyword);
         return "patients";
     }
 }
